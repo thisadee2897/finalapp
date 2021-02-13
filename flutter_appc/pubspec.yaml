@@ -36,6 +36,7 @@ dependencies:
   flutter_appavailability: ^0.0.21
   url_launcher: ^5.7.10
   intl: 0.16.1
+  provider: ^4.3.2+3
 
   cupertino_icons: ^1.0.2
 
