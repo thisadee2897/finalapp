@@ -1,18 +1,27 @@
 {
   "project_info": {
     "project_number": "955566017041",
+    "firebase_url": "https://dbintren-default-rtdb.firebaseio.com",
     "project_id": "dbintren",
     "storage_bucket": "dbintren.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:955566017041:android:0591af2f2dada047bc3fb0",
+        "mobilesdk_app_id": "1:955566017041:android:cd584980f230edb1bc3fb0",
         "android_client_info": {
           "package_name": "com.example.flutter_appc"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "955566017041-lurbk7q2hp5mkqrfn059v8l67igrite3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_appc",
+            "certificate_hash": "1ab20c5288eaff64e4235ce9b1da11740f6bfee3"
+          }
+        },
         {
           "client_id": "955566017041-1ikbrm5r5bgknddoqfsifc7cdm05lo81.apps.googleusercontent.com",
           "client_type": 3
