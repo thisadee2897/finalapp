@@ -19,7 +19,7 @@ class ListItemsBuilder<T> extends StatelessWidget {
       if (items.isNotEmpty) {
         return _buildList(items);
       } else {
-        return null;
+        return Container();
         // return EmptyContent();
       }
     } else if (snapshot.hasError) {
