@@ -33,6 +33,7 @@ target 'Runner' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
+  pod 'Firebase/Analytics'
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
