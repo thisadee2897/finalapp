@@ -61,13 +61,13 @@ class SignInPage extends StatelessWidget {
     }
   }
 
-  Future<void> _signInWithFacebook(BuildContext context) async {
-    try {
-      await manager.signInWithFacebook();
-    } on Exception catch (e) {
-      _showSignInError(context, e);
-    }
-  }
+  // Future<void> _signInWithFacebook(BuildContext context) async {
+  //   try {
+  //     await manager.signInWithFacebook();
+  //   } on Exception catch (e) {
+  //     _showSignInError(context, e);
+  //   }
+  // }
 
   void _signInWithEmail(BuildContext context) {
     Navigator.of(context).push(
@@ -109,14 +109,14 @@ class SignInPage extends StatelessWidget {
             color: Colors.white,
             onPressed: isLoading ? null : () => _signInWithGoogle(context),
           ),
-          SizedBox(height: 8.0),
-          SocialSignInButton(
-            assetName: 'assets/facebook-logo.png',
-            text: 'Sign in with Facebook',
-            textColor: Colors.white,
-            color: Color(0xFF334D92),
-            onPressed: isLoading ? null : () => _signInWithFacebook(context),
-          ),
+          // SizedBox(height: 8.0),
+          // SocialSignInButton(
+          //   assetName: 'assets/facebook-logo.png',
+          //   text: 'Sign in with Facebook',
+          //   textColor: Colors.white,
+          //   color: Color(0xFF334D92),
+          //   onPressed: isLoading ? null : () => _signInWithFacebook(context),
+          // ),
           SizedBox(height: 8.0),
           SignInButton(
             text: 'Sign in with email',

@@ -30,7 +30,7 @@ flutter_ios_podfile_setup
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
-  
+
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
@@ -39,10 +39,3 @@ post_install do |installer|
     flutter_additional_ios_build_settings(target)
   end
 end
-# pod 'FBSDKCoreKit'
-# pod 'FBSDKLoginKit'
-# pod 'FBSDKShareKit'
-# pod 'Firebase/Analytics'
-# pod 'Firebase/Messaging'
-# pod 'Firebase/Auth'
-# pod 'Firebase/Core'
