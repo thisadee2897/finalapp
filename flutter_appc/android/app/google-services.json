@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "176946751178",
+    "firebase_url": "https://interndb-5a7b2-default-rtdb.firebaseio.com",
     "project_id": "interndb-5a7b2",
     "storage_bucket": "interndb-5a7b2.appspot.com"
   },
@@ -37,6 +38,13 @@
             {
               "client_id": "176946751178-g8sna04sp6g0b7r86tfld1t8cdk4npmj.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "176946751178-pn2vmkebt0udahcu2f0hh002es23lc1v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterAppc"
+              }
             }
           ]
         }
