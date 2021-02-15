@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_appc/app/home/account/account_page.dart';
 import 'package:flutter_appc/app/home/cupertino_home_scaffold.dart';
 import 'package:flutter_appc/app/home/jobs/jobs_page.dart';
-import 'package:flutter_appc/app/home/models/birthday.dart';
 import 'package:flutter_appc/app/home/notification/entries_page.dart';
 import 'package:flutter_appc/app/home/tab_item.dart';
-import 'package:flutter_appc/services/database.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -94,17 +94,12 @@ class _AccountFriendState extends State<AccountFriend> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                        height: 50,
-                        width: 50,
-                        child: Image.asset('assets/phone.png')),
-                  ),
                   for (var _num in phoneList)
                     Container(
                       child: ListTile(
-                        title: Text('${_num.toString()}'),
+                        title: GestureDetector(
+                            onTap: () => launch('tel://${_num.toString()}'),
+                            child: Text('${_num.toString()}')),
                         leading: IconButton(
                           onPressed: () async {
                             final phoneNumber = "tel:${_num.toString()}";
@@ -202,20 +197,9 @@ class _AccountFriendState extends State<AccountFriend> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                      height: 50,
-                      width: 50,
-                      child: Image.asset('assets/mail.png')),
-                ),
                 for (var i in emailList)
                   ListTile(
                     title: Text('${i.toString()}'),
-                    leading: IconButton(
-                      onPressed: () => openEmailApp(context, i),
-                      icon: Icon(Icons.mail_outline),
-                    ),
                     // subtitle: Text('subtitle'),
                     trailing: IconButton(
                       onPressed: () async {
@@ -223,9 +207,13 @@ class _AccountFriendState extends State<AccountFriend> {
                             new ClipboardData(text: "${i.toString()}"));
                         final snackBar = new SnackBar(
                           backgroundColor: MyColors.primaryColorLight,
-                          content: new Text(
-                            "${i.toString()}",
-                            style: new TextStyle(color: Colors.white),
+                          content: GestureDetector(
+                            onTap: () => launch(
+                                'mailto:${i.toString()}?subject=test&body=hello'),
+                            child: new Text(
+                              "${i.toString()}",
+                              style: new TextStyle(color: Colors.white),
+                            ),
                           ),
                           action: new SnackBarAction(
                             disabledTextColor: Colors.red,
@@ -394,23 +382,5 @@ class _AccountFriendState extends State<AccountFriend> {
           ),
       ],
     );
-  }
-
-  _launchCaller(BuildContext context, _num) async {
-    final url = "tel:${_num.toString()}";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  Future<void> openEmailApp(BuildContext context, i) async {
-    final url = 'mailto:${i.toString()}?subject=test&body=hello';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }
