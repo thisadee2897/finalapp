@@ -199,7 +199,18 @@ class _AccountFriendState extends State<AccountFriend> {
               children: [
                 for (var i in emailList)
                   ListTile(
+<<<<<<< Updated upstream
                     title: Text('${i.toString()}'),
+=======
+                    title: GestureDetector(
+                        onTap: () => launch(
+                            'mailto:${i.toString()}?subject=test&body=hello'),
+                        child: Text('${i.toString()}')),
+                    leading: IconButton(
+                      onPressed: () => openEmailApp(context, i),
+                      icon: Icon(Icons.mail_outline),
+                    ),
+>>>>>>> Stashed changes
                     // subtitle: Text('subtitle'),
                     trailing: IconButton(
                       onPressed: () async {
