@@ -1,3 +1,6 @@
+import 'dart:html';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_appc/app/home/models/phone.dart';
 import 'package:flutter_appc/common_widgets/theme.dart';
@@ -50,70 +53,75 @@ class SearchFriend extends SearchDelegate {
         : sugFriend.addAll(_buildFriend()
             .where((p) => p.phoneNumber.startsWith(query))
             .toList());
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Material(
-            shadowColor: Colors.black38,
-            elevation: 5,
-            borderRadius: BorderRadius.circular(20),
-            child: Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: Container(
-                height: 150,
-                width: double.infinity,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 150,
-                            width: 150,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    bottomLeft: Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: AssetImage('assets/4.jpg'))),
-                          ),
-                          Text(
-                            'dsadasad',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ],
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Material(
+              shadowColor: Colors.black38,
+              elevation: 5,
+              borderRadius: BorderRadius.circular(20),
+              child: Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: Container(
+                  height: 300,
+                  width: 300,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        child: Container(
+                          height: 300,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  bottomLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: AssetImage('assets/4.jpg'))),
+                        ),
                       ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              onTap: () {
-                print('addfriend');
-              },
-              child: Container(
-                color: MyColors.primaryColorLight,
-                height: 40,
-                width: 100,
-                child: Center(
-                  child: Text(
-                    'เพิ่มเพื่อน',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600),
+                      Positioned(
+                        bottom: 10,
+                        left: 10,
+                        child: Text(
+                          'dataadadasdassad',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  print('addfriend');
+                },
+                child: Container(
+                  color: MyColors.primaryColorLight,
+                  height: 40,
+                  width: 100,
+                  child: Center(
+                    child: Text(
+                      'เพิ่มเพื่อน',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
