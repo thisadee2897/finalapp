@@ -113,53 +113,6 @@ class CardGrid extends StatelessWidget {
           ),
         ),
       ),
-      // child: Container(
-      //   width: double.infinity,
-      //   height: 500,
-      //   decoration: BoxDecoration(
-      //
-      //     image: DecorationImage(
-      //         image: AssetImage(
-      //           logo,
-      //         ),
-      //         fit: BoxFit.cover),
-      //     borderRadius: BorderRadius.all(Radius.circular(8)),
-      //     gradient:  LinearGradient(
-      //         colors: [
-      //           Colors.black,
-      //           Colors.grey,
-      //         ],
-      //         stops: [1.0, 1.0],
-      //         begin: FractionalOffset.topCenter,
-      //         end: FractionalOffset.bottomCenter,
-      //         tileMode: TileMode.repeated
-      //     ),
-      //   ),
-      //   child: Stack(
-      //     children: [
-      //       Column(
-      //         mainAxisAlignment: MainAxisAlignment.start,
-      //         crossAxisAlignment: CrossAxisAlignment.start,
-      //         children: <Widget>[
-      //           Expanded(child: SizedBox()),
-      //           Padding(
-      //             padding: const EdgeInsets.only(left: 4.0),
-      //             child: Row(
-      //               children: [
-      //                 Icon(
-      //                   Icons.star,
-      //                   color: Colors.white,
-      //                   size: 14,
-      //                 ),
-      //                 Text(title, style: headStyle1),
-      //               ],
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }
