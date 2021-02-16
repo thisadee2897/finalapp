@@ -156,6 +156,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               ),
                             ),
                             onTap: () async {
+                              list = true;
                               print("profile");
                               Navigator.of(context, rootNavigator: false).push(
                                   MaterialPageRoute(
