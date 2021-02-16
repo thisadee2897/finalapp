@@ -91,7 +91,7 @@ class _AccountAddEmailState extends State<AccountAddEmail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.myemail == null ? 'New Email' : 'Edit Email'),
+        title: Text(widget.myemail == null ? 'เพิ่มอีเมล์' : 'แก้ไขอีเมล์'),
         backgroundColor: MyColors.primaryColorLight,
       ),
       body: SingleChildScrollView(
@@ -106,7 +106,7 @@ class _AccountAddEmailState extends State<AccountAddEmail> {
                     initialValue: _email,
                     decoration: const InputDecoration(
                       icon: Icon(Icons.email),
-                      labelText: 'Email',
+                      labelText: 'อีเมล์',
                     ),
                     onSaved: (value) => _email = value,
                   ),
@@ -115,7 +115,7 @@ class _AccountAddEmailState extends State<AccountAddEmail> {
                   ),
                   CustomRaisedButton(
                     child: Text(
-                      'Save',
+                      'บันทึก',
                       style: TextStyle(color: Colors.white, fontSize: 15.0),
                     ),
                     color: MyColors.primaryColorLight,

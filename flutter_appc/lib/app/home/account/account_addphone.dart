@@ -90,8 +90,8 @@ class _AccountAddPhoneState extends State<AccountAddPhone> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.myPhoneNumber == null
-            ? 'New PhoneNumber'
-            : 'Edit PhoneNumber'),
+            ? 'เพิ่มหมายเลขโทรศัพท์'
+            : 'แก้ไขหมายเลขโทรศัพท์'),
         backgroundColor: MyColors.primaryColorLight,
       ),
       body: SingleChildScrollView(
@@ -105,11 +105,11 @@ class _AccountAddPhoneState extends State<AccountAddPhone> {
                   TextFormField(
                     decoration: const InputDecoration(
                       icon: Icon(Icons.phone_android),
-                      labelText: 'PhoneNumber',
+                      labelText: 'หมายเลขโทรศัพท์',
                     ),
                     initialValue: _phone,
                     validator: (value) =>
-                        value.isNotEmpty ? null : 'phone can\'t be empty',
+                        value.isNotEmpty ? null : 'ข้อมูลว่างเปล่า',
                     onSaved: (value) => _phone = value,
                     keyboardType: TextInputType.numberWithOptions(
                       signed: false,
@@ -121,7 +121,7 @@ class _AccountAddPhoneState extends State<AccountAddPhone> {
                   ),
                   CustomRaisedButton(
                     child: Text(
-                      'Save',
+                      'ว่าง',
                       style: TextStyle(color: Colors.white, fontSize: 15.0),
                     ),
                     color: MyColors.primaryColorLight,

@@ -93,7 +93,7 @@ class _AccountAddPlaceState extends State<AccountAddPlace> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.myAddress == null ? 'New Place' : 'Edit Place'),
+        title: Text(widget.myAddress == null ? 'เพิ่มที่อยู่' : 'แก้ไขที่อยู่'),
         backgroundColor: MyColors.primaryColorLight,
       ),
       body: SingleChildScrollView(
@@ -108,7 +108,7 @@ class _AccountAddPlaceState extends State<AccountAddPlace> {
                     initialValue: _address,
                     decoration: const InputDecoration(
                       icon: Icon(Icons.location_pin),
-                      labelText: 'Address',
+                      labelText: 'ที่อยู่',
                     ),
                     onSaved: (value) => _address = value,
                   ),
@@ -117,7 +117,7 @@ class _AccountAddPlaceState extends State<AccountAddPlace> {
                   ),
                   CustomRaisedButton(
                     child: Text(
-                      'Save',
+                      'บันทึก',
                       style: TextStyle(color: Colors.white, fontSize: 15.0),
                     ),
                     color: MyColors.primaryColorLight,
