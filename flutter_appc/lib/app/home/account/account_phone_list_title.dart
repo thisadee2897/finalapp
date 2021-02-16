@@ -15,7 +15,8 @@ class PhoneListTile extends StatelessWidget {
     return ListTile(
       title: Text(phone.phoneNumber),
       trailing: IconButton(
-        icon: Icon(Icons.delete_forever),
+        icon: Icon(Icons.delete_forever,
+          color: Colors.grey.shade400),
         onPressed: onDelete,
       ),
       onTap: onTap,

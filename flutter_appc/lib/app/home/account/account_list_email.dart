@@ -15,7 +15,7 @@ class EmailListTile extends StatelessWidget {
       // leading: Icon(Iconsem),
       title: Text(email.email),
       trailing: IconButton(
-        icon: Icon(Icons.delete_forever),
+        icon: Icon(Icons.delete_forever, color: Colors.grey.shade400),
         onPressed: onDelete,
       ),
       onTap: onTap,

@@ -143,27 +143,8 @@ class _AccountPageState extends State<AccountPage> {
         title: Text('Account'),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.save), onPressed: () => _setBirthDay(context)),
-          IconButton(
-            icon: Icon(Icons.add_location_alt_outlined),
-            onPressed: () => AccountAddPlace.show(
-              context,
-              database: Provider.of<Database>(context, listen: false),
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.add_comment_outlined),
-            onPressed: () => AccountAddEmail.show(
-              context,
-              database: Provider.of<Database>(context, listen: false),
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => AccountAddPhone.show(
-              context,
-              database: Provider.of<Database>(context, listen: false),
-            ),
+            icon: Icon(Icons.save),
+            onPressed: () => _setBirthDay(context),
           ),
           IconButton(
             icon: Icon(Icons.exit_to_app),
@@ -483,48 +464,48 @@ class _AccountPageState extends State<AccountPage> {
   //   );
   // }
 
-  Widget _buildAge() {
-    final database = Provider.of<Database>(context, listen: false);
-    return StreamBuilder<List<Birthday>>(
-      stream: database.birthdayStream(),
-      builder: (context, snapshot) {
-        return ListTile(
-            title: Row(
-              children: [
-                Text("${_myHBD.toLocal()}".split(' ')[0]),
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                    'อายุ ${(DateTime.now().difference(_myHBD).inDays / 365.25).floor()} ปี'),
-              ],
-            ),
-            trailing: Icon(Icons.calendar_today),
-            onTap: () {
-              // _selectDate(context);
-            });
-      },
-    );
-  }
+  // Widget _buildAge() {
+  //   final database = Provider.of<Database>(context, listen: false);
+  //   return StreamBuilder<List<Birthday>>(
+  //     stream: database.birthdayStream(),
+  //     builder: (context, snapshot) {
+  //       return ListTile(
+  //           title: Row(
+  //             children: [
+  //               Text("${_myHBD.toLocal()}".split(' ')[0]),
+  //               SizedBox(
+  //                 width: 30,
+  //               ),
+  //               Text(
+  //                   'อายุ ${(DateTime.now().difference(_myHBD).inDays / 365.25).floor()} ปี'),
+  //             ],
+  //           ),
+  //           trailing: Icon(Icons.calendar_today),
+  //           onTap: () {
+  //             // _selectDate(context);
+  //           });
+  //     },
+  //   );
+  // }
 
-  _buildDate(BuildContext context) {
-    final database = Provider.of<Database>(context, listen: false);
-    return StreamBuilder<List<Birthday>>(
-      stream: database.birthdayStream(),
-      builder: (context, snapshot) {
-        return ListItemsBuilder<Birthday>(
-          snapshot: snapshot,
-          itemBuilder: (context, _num) => Dismissible(
-            key: Key('birth-${_num.id}'),
-            background: Container(color: Colors.red),
-            direction: DismissDirection.endToStart,
-            child: BirthDayTile(
-              onTap: () => _setBirthDay(context),
-              birthDay: _num,
-            ),
-          ),
-        );
-      },
-    );
-  }
+  // _buildDate(BuildContext context) {
+  //   final database = Provider.of<Database>(context, listen: false);
+  //   return StreamBuilder<List<Birthday>>(
+  //     stream: database.birthdayStream(),
+  //     builder: (context, snapshot) {
+  //       return ListItemsBuilder<Birthday>(
+  //         snapshot: snapshot,
+  //         itemBuilder: (context, _num) => Dismissible(
+  //           key: Key('birth-${_num.id}'),
+  //           background: Container(color: Colors.red),
+  //           direction: DismissDirection.endToStart,
+  //           child: BirthDayTile(
+  //             onTap: () => _setBirthDay(context),
+  //             birthDay: _num,
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 }
