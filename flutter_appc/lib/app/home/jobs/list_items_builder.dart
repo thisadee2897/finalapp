@@ -20,11 +20,10 @@ class ListItemsBuilder<T> extends StatelessWidget {
         return _buildList(items);
       } else {
         return EmptyContent();
-        // return EmptyContent();
       }
     } else if (snapshot.hasError) {
       return EmptyContent(
-        title: 'ไม่มีข้อมูล',
+        // title: 'ไม่มีข้อมูล',
         message: 'ว่าง',
       );
     }

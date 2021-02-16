@@ -180,14 +180,70 @@ class _AccountPageState extends State<AccountPage> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // _buildDate(context),
               _buildBirthDay(context),
-              _buildPhone(context),
-              _buildEmail(context),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                    child: GestureDetector(
+                      onTap: () => AccountAddPhone.show(
+                        context,
+                        database: Provider.of<Database>(context, listen: false),
+                      ),
+                      child: Text(
+                        "เพิ่มหมายเลขโทรศัพท์",
+                        style: TextStyle(color: Colors.blueAccent),
+                      ),
+                    ),
+                  ),
+                  _buildPhone(context),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                    child: GestureDetector(
+                      onTap: () => AccountAddEmail.show(
+                        context,
+                        database: Provider.of<Database>(context, listen: false),
+                      ),
+                      child: Text(
+                        "เพิ่มอีเมล์",
+                        style: TextStyle(color: Colors.blueAccent),
+                      ),
+                    ),
+                  ),
+                  _buildEmail(context),
+                ],
+              ),
               // _buildPhones(context)
-              _buildAddress(context),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                    child: GestureDetector(
+                      onTap: () => AccountAddPlace.show(
+                        context,
+                        database: Provider.of<Database>(context, listen: false),
+                      ),
+                      child: Text(
+                        "เพิ่มที่อยู่",
+                        style: TextStyle(color: Colors.blueAccent),
+                      ),
+                    ),
+                  ),
+                  _buildAddress(context),
+                ],
+              ),
             ],
           ),
         ),
