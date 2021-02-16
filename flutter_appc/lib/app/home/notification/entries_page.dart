@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appc/common_widgets/show_alert_dialog.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_appc/app/home/jobs/list_items_builder.dart';
@@ -7,10 +8,7 @@ import 'package:flutter_appc/app/home/notification/entries_list_tile.dart';
 import 'package:flutter_appc/common_widgets/theme.dart';
 import 'package:flutter_appc/services/database.dart';
 
-class NotificationPage extends StatelessWidget {
-  String now = DateFormat("hh:mm dd/MM/yy").format(DateTime.now());
-  String get image => "assets/01.jpg";
-  String get name => "Thisadee Chornbulom";
+class NotificationPage extends StatefulWidget {
   static Widget create(BuildContext context) {
     final database = Provider.of<Database>(context, listen: false);
     return Provider<EntriesBloc>(
@@ -20,13 +18,26 @@ class NotificationPage extends StatelessWidget {
   }
 
   @override
+  _NotificationPageState createState() => _NotificationPageState();
+}
+
+class _NotificationPageState extends State<NotificationPage> {
+  String now = DateFormat("hh:mm dd/MM/yy").format(DateTime.now());
+
+  String get image => "assets/01.jpg";
+
+  String get name => "Thisadee Chornbulom";
+
+  bool submit = false;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         title: Text(
-          'Notifications',
+          'การแจ้งเตือน',
           style: TextStyle(color: Colors.black87),
         ),
         elevation: 0.5,
@@ -39,8 +50,6 @@ class NotificationPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildnewfriend(context),
-              _buildnewfriend(context),
               _buildnewfriend(context),
             ],
           ),
@@ -119,59 +128,89 @@ class NotificationPage extends StatelessWidget {
                 Positioned(
                   bottom: 0,
                   right: 0,
-                  child: Row(
-                    children: [
-                      InkWell(
-                        child: Material(
-                          shadowColor: Colors.black38,
-                          color: MyColors.primaryColorLight,
-                          elevation: 3,
-                          borderRadius: BorderRadius.circular(4),
-                          child: Container(
-                            height: 35,
-                            width: 100,
-                            child: Center(
-                              child: Text(
-                                'ยืนยัน',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
+                  child: submit
+                      ? Center(
+                          child: InkWell(
+                            child: Material(
+                              shadowColor: Colors.black38,
+                              color: MyColors.primaryColorLight,
+                              elevation: 3,
+                              borderRadius: BorderRadius.circular(4),
+                              child: Container(
+                                height: 35,
+                                width: 170,
+                                child: Center(
+                                  child: Text(
+                                    'ดูโปรไฟล์',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                ),
                               ),
                             ),
+                            onTap: () async {
+                              print("profile");
+                            },
                           ),
+                        )
+                      : Row(
+                          children: [
+                            InkWell(
+                              child: Material(
+                                shadowColor: Colors.black38,
+                                color: MyColors.primaryColorLight,
+                                elevation: 3,
+                                borderRadius: BorderRadius.circular(4),
+                                child: Container(
+                                  height: 35,
+                                  width: 100,
+                                  child: Center(
+                                    child: Text(
+                                      'ยืนยัน',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  print('OK');
+                                  submit = true;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {});
+                              },
+                              child: Material(
+                                color: Colors.grey.shade500,
+                                shadowColor: Colors.black38,
+                                elevation: 3,
+                                borderRadius: BorderRadius.circular(4),
+                                child: Container(
+                                  height: 35,
+                                  width: 100,
+                                  // color: Colors.grey,
+                                  child: Center(
+                                    child: Text(
+                                      'ปฎิเสธ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        onTap: () {
-                          print('OK');
-                        },
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          print('No');
-                        },
-                        child: Material(
-                          color: Colors.grey.shade500,
-                          shadowColor: Colors.black38,
-                          elevation: 3,
-                          borderRadius: BorderRadius.circular(4),
-                          child: Container(
-                            height: 35,
-                            width: 100,
-                            // color: Colors.grey,
-                            child: Center(
-                                child: Text(
-                              'ปฎิเสธ',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
-                            )),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
                 ),
               ],
             ),
@@ -180,19 +219,12 @@ class NotificationPage extends StatelessWidget {
       ),
     );
   }
+
+  Future<void> _deleteAddress(
+      BuildContext context, NotificationList _data) async {
+    final database = Provider.of<Database>(context, listen: false);
+    // await database.deleteAddress(_data);
+  }
 }
 
-Size displaySize(BuildContext context) {
-  debugPrint('Size = ' + MediaQuery.of(context).size.toString());
-  return MediaQuery.of(context).size;
-}
-
-double displayHeight(BuildContext context) {
-  debugPrint('Height = ' + displaySize(context).height.toString());
-  return displaySize(context).height;
-}
-
-double displayWidth(BuildContext context) {
-  debugPrint('Width = ' + displaySize(context).width.toString());
-  return displaySize(context).width;
-}
+class NotificationList {}

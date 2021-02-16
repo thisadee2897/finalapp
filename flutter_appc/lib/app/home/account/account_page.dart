@@ -8,21 +8,18 @@ import 'package:provider/provider.dart';
 import 'package:flutter_appc/app/home/account/account_add_address.dart';
 import 'package:flutter_appc/app/home/account/account_add_email.dart';
 import 'package:flutter_appc/app/home/account/account_addphone.dart';
-import 'package:flutter_appc/app/home/account/account_birthday_tile.dart';
 import 'package:flutter_appc/app/home/account/account_list_email.dart';
 import 'package:flutter_appc/app/home/jobs/list_items_builder.dart';
 import 'package:flutter_appc/app/home/models/email.dart';
 import 'package:flutter_appc/app/home/models/phone.dart';
 import 'package:flutter_appc/app/home/models/place.dart';
 import 'package:flutter_appc/common_widgets/avatar.dart';
-
 import 'package:flutter_appc/common_widgets/date_time_picker.dart';
 import 'package:flutter_appc/common_widgets/show_alert_dialog.dart';
 import 'package:flutter_appc/common_widgets/show_exception_alert_dialog.dart';
 import 'package:flutter_appc/common_widgets/theme.dart';
 import 'package:flutter_appc/services/auth.dart';
 import 'package:flutter_appc/services/database.dart';
-
 import 'account_phone_list_title.dart';
 
 class AccountPage extends StatefulWidget {
@@ -140,12 +137,7 @@ class _AccountPageState extends State<AccountPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: MyColors.primaryColorLight,
-        title: Text('Account'),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.save),
-            onPressed: () => _setBirthDay(context),
-          ),
           IconButton(
             icon: Icon(Icons.exit_to_app),
             onPressed: () => _confirmSignOut(context),
@@ -162,7 +154,6 @@ class _AccountPageState extends State<AccountPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // _buildDate(context),
               _buildBirthDay(context),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
