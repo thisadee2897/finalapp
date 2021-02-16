@@ -51,10 +51,6 @@ class _AccountFriendState extends State<AccountFriend> {
         brightness: Brightness.dark,
         backgroundColor: MyColors.primaryColorLight,
         centerTitle: true,
-        title: Text(
-          'Profile',
-          style: TextStyle(color: Colors.white),
-        ),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(130),
           child: buildImage(),
@@ -79,7 +75,7 @@ class _AccountFriendState extends State<AccountFriend> {
 
   Widget _buildPhone(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       child: Material(
         color: Colors.white,
         elevation: 5,
@@ -171,7 +167,7 @@ class _AccountFriendState extends State<AccountFriend> {
 
   Widget _buildEmail(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       child: Material(
         color: Colors.white,
         elevation: 5,
@@ -225,7 +221,7 @@ class _AccountFriendState extends State<AccountFriend> {
 
   Widget _buildAddress(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       child: Material(
         color: Colors.white,
         elevation: 5,
@@ -237,10 +233,6 @@ class _AccountFriendState extends State<AccountFriend> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    height: 80,
-                    width: 80,
-                    child: Image.asset('assets/Place.png')),
                 for (var i in addressList)
                   ListTile(
                     title: Text('${i.toString()}'),
