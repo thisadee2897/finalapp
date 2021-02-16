@@ -50,94 +50,108 @@ class SearchFriend extends SearchDelegate {
         : sugFriend.addAll(_buildFriend()
             .where((p) => p.phoneNumber.startsWith(query))
             .toList());
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Material(
-              shadowColor: Colors.black38,
-              elevation: 5,
-              borderRadius: BorderRadius.circular(8),
-              child: Padding(
-                padding: const EdgeInsets.all(0.0),
-                child: Container(
-                  height: 300,
-                  width: 300,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        child: Container(
-                          height: 300,
-                          width: 300,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(8),
-                                  bottomLeft: Radius.circular(8),
-                                  topRight: Radius.circular(8),
-                                  bottomRight: Radius.circular(8)),
-                              image: DecorationImage(
-                                  image: AssetImage('assets/4.jpg'))),
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: sugFriend.length,
+        itemBuilder: (context, indext) {
+          var listItem = sugFriend[indext].phoneNumber;
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Material(
+                    shadowColor: Colors.black38,
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(8),
+                    child: Padding(
+                      padding: const EdgeInsets.all(0.0),
+                      child: Container(
+                        height: 300,
+                        width: 300,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              top: 0,
+                              left: 0,
+                              child: Container(
+                                height: 300,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(8),
+                                        bottomLeft: Radius.circular(8),
+                                        topRight: Radius.circular(8),
+                                        bottomRight: Radius.circular(8)),
+                                    image: DecorationImage(
+                                        image: AssetImage('assets/4.jpg'))),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              left: 0,
+                              child: Container(
+                                height: 65,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(8),
+                                      bottomRight: Radius.circular(8)),
+                                  gradient: LinearGradient(
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      colors: [
+                                        Colors.black54,
+                                        Colors.transparent
+                                      ]),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              left: 10,
+                              child: Text(
+                                'Kamonchanok Chaisiri',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                            )
+                          ],
                         ),
                       ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          height: 65,
-                          width: 300,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(8),
-                                bottomRight: Radius.circular(8)),
-                            gradient: LinearGradient(
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                                colors: [Colors.black54, Colors.transparent]),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () {
+                        print('addfriend');
+                      },
+                      child: Container(
+                        color: MyColors.primaryColorLight,
+                        height: 40,
+                        width: 100,
+                        child: Center(
+                          child: Text(
+                            'เพิ่มเพื่อน',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
-                      Positioned(
-                        bottom: 10,
-                        left: 10,
-                        child: Text(
-                          'Kamonchanok Chaisiri',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                    ),
+                  )
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {
-                  print('addfriend');
-                },
-                child: Container(
-                  color: MyColors.primaryColorLight,
-                  height: 40,
-                  width: 100,
-                  child: Center(
-                    child: Text(
-                      'เพิ่มเพื่อน',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 
   List<Phone> _buildFriend() {
