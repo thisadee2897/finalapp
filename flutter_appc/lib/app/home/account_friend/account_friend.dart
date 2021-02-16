@@ -85,60 +85,48 @@ class _AccountFriendState extends State<AccountFriend> {
         elevation: 5,
         shadowColor: Colors.black38,
         borderRadius: BorderRadius.all(Radius.circular(14)),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            // color: Colors.green,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  for (var _num in phoneList)
-                    Container(
-                      child: ListTile(
-                        title: GestureDetector(
-                            onTap: () => launch('tel://${_num.toString()}'),
-                            child: Text('${_num.toString()}')),
-                        leading: IconButton(
-                          onPressed: () async {
-                            final phoneNumber = "tel:${_num.toString()}";
-                            if (await canLaunch(phoneNumber)) {
-                              await launch(phoneNumber);
-                            } else {
-                              throw 'Could not launch $phoneNumber';
-                            }
-                          },
-                          icon: Icon(Icons.call),
+        child: Container(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var _num in phoneList)
+                  Container(
+                    child: ListTile(
+                      title: GestureDetector(
+                          onTap: () => launch('tel://${_num.toString()}'),
+                          child: Text('${_num.toString()}')),
+                      // subtitle: Text('subtitle'),
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.copy_sharp,
+                          color: Colors.grey.shade400,
                         ),
-                        // subtitle: Text('subtitle'),
-                        trailing: IconButton(
-                          icon: Icon(Icons.copy_sharp),
-                          onPressed: () async {
-                            await Clipboard.setData(
-                                new ClipboardData(text: "${_num.toString()}"));
-                            final snackBar = new SnackBar(
-                              backgroundColor: MyColors.primaryColorLight,
-                              content: new Text(
-                                "${_num.toString()}",
-                                style: new TextStyle(color: Colors.white),
-                              ),
-                              action: new SnackBarAction(
-                                disabledTextColor: Colors.red,
-                                textColor: Colors.white,
-                                label: 'Undo',
-                                onPressed: () {
-                                  // Some code to undo the change!
-                                },
-                              ),
-                            );
-                            _scaffoldstate.currentState.showSnackBar(snackBar);
-                          },
-                        ),
+                        onPressed: () async {
+                          await Clipboard.setData(
+                              new ClipboardData(text: "${_num.toString()}"));
+                          final snackBar = new SnackBar(
+                            backgroundColor: MyColors.primaryColorLight,
+                            content: new Text(
+                              "${_num.toString()}",
+                              style: new TextStyle(color: Colors.white),
+                            ),
+                            action: new SnackBarAction(
+                              disabledTextColor: Colors.red,
+                              textColor: Colors.white,
+                              label: 'Undo',
+                              onPressed: () {
+                                // Some code to undo the change!
+                              },
+                            ),
+                          );
+                          _scaffoldstate.currentState.showSnackBar(snackBar);
+                        },
                       ),
                     ),
-                ],
-              ),
+                  ),
+              ],
             ),
           ),
         ),
@@ -199,18 +187,7 @@ class _AccountFriendState extends State<AccountFriend> {
               children: [
                 for (var i in emailList)
                   ListTile(
-<<<<<<< Updated upstream
                     title: Text('${i.toString()}'),
-=======
-                    title: GestureDetector(
-                        onTap: () => launch(
-                            'mailto:${i.toString()}?subject=test&body=hello'),
-                        child: Text('${i.toString()}')),
-                    leading: IconButton(
-                      onPressed: () => openEmailApp(context, i),
-                      icon: Icon(Icons.mail_outline),
-                    ),
->>>>>>> Stashed changes
                     // subtitle: Text('subtitle'),
                     trailing: IconButton(
                       onPressed: () async {
@@ -237,7 +214,7 @@ class _AccountFriendState extends State<AccountFriend> {
                         );
                         _scaffoldstate.currentState.showSnackBar(snackBar);
                       },
-                      icon: Icon(Icons.copy_sharp),
+                      icon: Icon(Icons.copy_sharp, color: Colors.grey.shade400),
                     ),
                   ),
               ],
@@ -269,11 +246,6 @@ class _AccountFriendState extends State<AccountFriend> {
                 for (var i in addressList)
                   ListTile(
                     title: Text('${i.toString()}'),
-                    leading: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.location_pin),
-                    ),
-                    // subtitle: Text('subtitle'),
                     trailing: IconButton(
                       onPressed: () async {
                         await Clipboard.setData(
@@ -295,7 +267,7 @@ class _AccountFriendState extends State<AccountFriend> {
                         );
                         _scaffoldstate.currentState.showSnackBar(snackBar);
                       },
-                      icon: Icon(Icons.copy_sharp),
+                      icon: Icon(Icons.copy_sharp, color: Colors.grey.shade400),
                     ),
                   ),
               ],
