@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_appc/app/home/account/account_list_address.dart';
 import 'package:flutter_appc/app/home/models/birthday.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_appc/app/home/account/account_add_address.dart';
@@ -186,7 +187,7 @@ class _AccountPageState extends State<AccountPage> {
               _buildPhone(context),
               _buildEmail(context),
               // _buildPhones(context)
-              // _buildAddress(context),
+              _buildAddress(context),
             ],
           ),
         ),
@@ -343,13 +344,6 @@ class _AccountPageState extends State<AccountPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    height: 50,
-                    width: 50,
-                    child: Image.asset('assets/mail.png')),
-              ),
               StreamBuilder<List<Email>>(
                 stream: database.emailsStream(),
                 builder: (context, snapshot) {
@@ -379,17 +373,59 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget _buildAddress(BuildContext context) {
-    return StreamBuilder<List<Place>>(
-      stream: database.addresssStream(),
-      builder: (context, snapshot) {
-        var address = snapshot.data;
-        return Container(
-          color: Colors.redAccent,
-          child: Text(address.toString()),
-        );
-      },
+    final database = Provider.of<Database>(context, listen: false);
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Material(
+        color: Colors.white,
+        elevation: 5,
+        shadowColor: Colors.black38,
+        borderRadius: BorderRadius.all(Radius.circular(14)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              StreamBuilder<List<Place>>(
+                stream: database.addresssStream(),
+                builder: (context, snapshot) {
+                  return ListItemsBuilder<Place>(
+                    snapshot: snapshot,
+                    itemBuilder: (context, _addressData) => AddressListTile(
+                      address: _addressData,
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => AccountAddPlace(
+                            database: database,
+                            myAddress: _addressData,
+                          ),
+                          fullscreenDialog: false,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
+
+  // Widget _buildAddress(BuildContext context) {
+  //   return StreamBuilder<List<Place>>(
+  //     stream: database.addresssStream(),
+  //     builder: (context, snapshot) {
+  //       var address = snapshot.data;
+  //       return Container(
+  //         color: Colors.redAccent,
+  //         child: Text(address.toString()),
+  //       );
+  //     },
+  //   );
+  // }
 
   Widget _buildAge() {
     final database = Provider.of<Database>(context, listen: false);
