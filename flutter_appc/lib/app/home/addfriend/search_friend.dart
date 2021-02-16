@@ -71,25 +71,42 @@ class SearchFriend extends SearchDelegate {
                       Positioned(
                         top: 0,
                         left: 0,
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 300,
-                              width: 300,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(8),
-                                      bottomLeft: Radius.circular(8),
-                                      topRight: Radius.circular(8),
-                                      bottomRight: Radius.circular(8)),
-                                  image: DecorationImage(
-                                      image: AssetImage('assets/4.jpg'))),
-                            ),
-                            Text(
-                              'dsadasad',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ],
+                        child: Container(
+                          height: 300,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(8),
+                                  bottomLeft: Radius.circular(8),
+                                  topRight: Radius.circular(8),
+                                  bottomRight: Radius.circular(8)),
+                              image: DecorationImage(
+                                  image: AssetImage('assets/4.jpg'))),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        child: Container(
+                          height: 65,
+                          width: 300,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8),
+                                bottomRight: Radius.circular(8)),
+                            gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: [Colors.black54, Colors.transparent]),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 10,
+                        left: 10,
+                        child: Text(
+                          'Kamonchanok Chaisiri',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       )
                     ],
