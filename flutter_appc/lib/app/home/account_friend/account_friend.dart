@@ -187,21 +187,19 @@ class _AccountFriendState extends State<AccountFriend> {
               children: [
                 for (var i in emailList)
                   ListTile(
-                    title: Text('${i.toString()}'),
-                    // subtitle: Text('subtitle'),
+                    title: GestureDetector(
+                        onTap: () => launch(
+                            'mailto:${i.toString()}?subject=test&body=hello'),
+                        child: Text('${i.toString()}')),
                     trailing: IconButton(
                       onPressed: () async {
                         await Clipboard.setData(
                             new ClipboardData(text: "${i.toString()}"));
                         final snackBar = new SnackBar(
                           backgroundColor: MyColors.primaryColorLight,
-                          content: GestureDetector(
-                            onTap: () => launch(
-                                'mailto:${i.toString()}?subject=test&body=hello'),
-                            child: new Text(
-                              "${i.toString()}",
-                              style: new TextStyle(color: Colors.white),
-                            ),
+                          content: new Text(
+                            "${i.toString()}",
+                            style: new TextStyle(color: Colors.white),
                           ),
                           action: new SnackBarAction(
                             disabledTextColor: Colors.red,
