@@ -19,13 +19,13 @@ class ListItemsBuilder<T> extends StatelessWidget {
       if (items.isNotEmpty) {
         return _buildList(items);
       } else {
-        return Container();
+        return EmptyContent();
         // return EmptyContent();
       }
     } else if (snapshot.hasError) {
       return EmptyContent(
-        title: 'Something went wrong',
-        message: 'Can\'t load items right now',
+        title: 'ไม่มีข้อมูล',
+        message: 'ว่าง',
       );
     }
     return Center(child: CircularProgressIndicator());
@@ -33,11 +33,11 @@ class ListItemsBuilder<T> extends StatelessWidget {
 
   Widget _buildList(List<T> items) => ListView.separated(
         shrinkWrap: true,
-        itemCount: items.length,
+        itemCount: items.length + 2,
         separatorBuilder: (context, index) => Divider(height: 0),
         itemBuilder: (context, index) {
           if (index == 0 || index == items.length + 1) {
-            return Column();
+            return Container();
           }
           return itemBuilder(context, items[index - 1]);
         },
