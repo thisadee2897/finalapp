@@ -30,6 +30,7 @@ class _NotificationPageState extends State<NotificationPage> {
   String get name => "Chakkapat Saenphisan";
 
   bool submit = false;
+  bool list = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,11 @@ class _NotificationPageState extends State<NotificationPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildnewfriend(context),
+              list
+                  ? Center(
+                      child: Text("ว่าง"),
+                    )
+                  : _buildnewfriend(context),
             ],
           ),
         ),
@@ -191,7 +196,9 @@ class _NotificationPageState extends State<NotificationPage> {
                             ),
                             InkWell(
                               onTap: () {
-                                setState(() {});
+                                setState(() {
+                                  list = true;
+                                });
                               },
                               child: Material(
                                 color: Colors.grey.shade500,
