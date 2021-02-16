@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appc/app/home/account_friend/account_friend.dart';
 import 'package:flutter_appc/common_widgets/show_alert_dialog.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -24,9 +25,9 @@ class NotificationPage extends StatefulWidget {
 class _NotificationPageState extends State<NotificationPage> {
   String now = DateFormat("hh:mm dd/MM/yy").format(DateTime.now());
 
-  String get image => "assets/01.jpg";
+  String get image => "assets/2.jpg";
 
-  String get name => "Thisadee Chornbulom";
+  String get name => "Chakkapat Saenphisan";
 
   bool submit = false;
 
@@ -151,6 +152,9 @@ class _NotificationPageState extends State<NotificationPage> {
                             ),
                             onTap: () async {
                               print("profile");
+                              Navigator.of(context, rootNavigator: false).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => AccountFriend()));
                             },
                           ),
                         )
