@@ -22,14 +22,13 @@ class _HomePageState extends State<HomePage> {
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
       TabItem.jobs: (_) => JobsPage(),
-      TabItem.account: (_) => AccountPage(),
+      TabItem.account: (_) => AccountPage(birthday: null,),
       TabItem.entries: (context) => NotificationPage.create(context),
     };
   }
 
   void _select(TabItem tabItem) {
     if (tabItem == _currentTab) {
-      // pop to first route
       navigatorKeys[tabItem].currentState.popUntil((route) => route.isFirst);
     } else {
       setState(() => _currentTab = tabItem);

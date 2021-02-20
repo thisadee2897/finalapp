@@ -82,9 +82,9 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Relationship'),
-        elevation: 2.0,
-      ),
+          title: Text('Relationship'),
+          elevation: 2.0,
+          brightness: Brightness.dark),
       body: _buildContent(context),
       backgroundColor: Colors.grey[200],
     );

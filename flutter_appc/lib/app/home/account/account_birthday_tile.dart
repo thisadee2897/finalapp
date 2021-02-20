@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appc/app/home/models/account.dart';
 import 'package:flutter_appc/app/home/models/birthday.dart';
 
 class BirthDayTile extends StatelessWidget {
